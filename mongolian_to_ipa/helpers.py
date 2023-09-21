@@ -1,5 +1,7 @@
 from enum import Enum
 
+vowels = ['а', 'э', 'и', 'о', 'ө', 'ү', 'у']
+
 
 class WordGender(Enum):
     MALE = 1
