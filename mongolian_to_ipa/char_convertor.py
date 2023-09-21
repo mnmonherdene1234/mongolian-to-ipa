@@ -294,13 +294,13 @@ def ya_convert(word: str, index: int) -> str:
     text = word[index:]
     length = len(text)
 
-    if length > 2 and text[index + 2] == 'ь':
+    if length > 2 and index + 2 < length and text[index + 2] == 'ь':
         return 'jæ'
 
     if length > 1:
-        if text[index + 1] == 'й':
+        if index + 1 < length and text[index + 1] == 'й':
             return 'jæː'
-        elif text[index + 1] == 'а':
+        elif index + 1 < length and text[index + 1] == 'а':
             return 'jaː'
 
     return 'ja'

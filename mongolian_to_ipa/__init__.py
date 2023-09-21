@@ -3,7 +3,7 @@ from mongolian_to_ipa.char_convertor import a_convert, w_convert, k_convert, o_c
 from mongolian_to_ipa.mongolia_ipa_dictionary import mongolian_to_ipa
 
 
-def mongolian_convert_to_ipa(word):
+def mongolian_convert_to_ipa(word: str) -> str:
     word = word.lower()
 
     ipa_transcription = ''

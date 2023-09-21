@@ -27,11 +27,12 @@ mongolian_to_ipa = {
     'ц': 'ʦʰ',  # OK
     'ч': 'ʧʰ',  # OK
     'ш': 'ʃ',  # OK
-    'щ': 'ʃː', # OK
+    'щ': 'ʃː',  # OK
     'ъ': 'ъ',  # NOT FOUND
     'ы': 'ы',  # NOT FOUND
     'ь': 'ь',  # NOT FOUND
     'э': 'e',  # OK
     'ю': 'ju',  # OK
     'я': 'ja',  # OK
+    ' ': '.'
 }
