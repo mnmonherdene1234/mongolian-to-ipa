@@ -1,10 +1,10 @@
 from mongolian_to_ipa.char_convertor import a_convert, w_convert, k_convert, o_convert, ou_convert, u_convert, \
-    oo_convert, h_convert, e_convert, yu_convert, ye_convert, ya_convert, ii_convert
+    oo_convert, h_convert, e_convert, yu_convert, ye_convert, ya_convert, ii_convert, l_convert
 from mongolian_to_ipa.mongolia_ipa_dictionary import mongolian_to_ipa
 
 
 def mongolian_convert_to_ipa(word):
-    word.lower()
+    word = word.lower()
 
     ipa_transcription = ''
 
@@ -56,12 +56,18 @@ def mongolian_convert_to_ipa(word):
             if c == 'и':
                 add_char = ii_convert(word, i)
 
+            if c == 'л':
+                add_char = l_convert(word, i)
+
+            # ignore characters:
+            if c in ['й', 'ь', 'ъ']:
+                add_char = ''
+
             if add_char is not None:
                 ipa_transcription += add_char
             else:
                 ipa_transcription += mongolian_to_ipa[c]
         except KeyError:
-            print(f"Character '{c}' not found.")
             ipa_transcription += c
 
     return ipa_transcription

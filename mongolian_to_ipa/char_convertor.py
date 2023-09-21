@@ -11,7 +11,7 @@ def a_convert(word: str, index: int) -> str:
     """
 
     if not index == 0:
-        if word[index - 1] == 'а':
+        if word[index - 1] in ['а', 'у']:
             return ''
 
     text = word[index:]
@@ -150,6 +150,15 @@ def u_convert(word: str, index: int) -> str:
     if is_ui:
         return 'oi'
 
+    is_ua = 'а' == text[1] if len(text) > 1 else False
+    if is_ua:
+        is_uai = 'й' == text[2] if len(text) > 2 else False
+
+        if is_uai:
+            return 'wæː'
+
+        return 'waː'
+
     is_uu = 'у' == text[1] if len(text) > 1 else False
 
     if is_uu:
@@ -205,6 +214,10 @@ def h_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
+    if not index == 0:
+        if word[index - 1] == 'л':
+            return ''
+
     gender = check_male_female_word(word)
 
     if gender == WordGender.MALE:
@@ -262,10 +275,10 @@ def ye_convert(word: str, index: int) -> str:
     if not text.find('өө') == -1:
         return 'jө'
 
-    if length > 2 and text[index + 1] == 'ө':
+    if length > 2 and index + 1 < length and text[index + 1] == 'ө':
         return 'jөː'
 
-    if length > 2 and text[index + 1] == 'э':
+    if length > 2 and index + 1 < length and text[index + 1] == 'э':
         return 'jeː'
 
     return 'je'
@@ -307,7 +320,7 @@ def yo_convert(word: str, index: int) -> str:
         if c in ['й', 'ь']:
             return 'jœ'
 
-    if length > 2 and text[index + 1] == 'о':
+    if length > 2 and index + 1 < length and text[index + 1] == 'о':
         return 'jɔː'
     else:
         return 'jɔ'
@@ -317,7 +330,17 @@ def ii_convert(word: str, index: int) -> str:
     text = word[index:]
     length = len(text)
 
-    if length > 2 and text[index + 1] == 'й':
+    if length > 2 and index + 1 < length and text[index + 1] == 'й':
         return 'iː'
     else:
         return 'i'
+
+
+def l_convert(word: str, index: int) -> str:
+    text = word[index:]
+    length = len(text)
+
+    if length > 2 and index + 1 < length and text[index + 1] == 'х':
+        return 'ɬʰ'
+
+    return 'ɬ'
