@@ -1,4 +1,4 @@
-from mongolian_to_ipa.helpers import check_male_female_word, WordGender, vowels
+from mongolian2ipa.helpers import check_male_female_word, WordGender, vowels
 
 
 # Characters functions

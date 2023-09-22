@@ -3,7 +3,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(name="mongolian2ipa", version="0.0.1", author="mnmonherdene",
+setuptools.setup(name="mongolian2ipa", version="0.0.3", author="mnmonherdene",
                  author_email="mnmonherdene1234@gmail.com",
                  description="Mongolian text to International Phonetic Alphabet", long_description=long_description,
                  long_description_content_type="text/markdown",
