@@ -1,7 +1,10 @@
 # Mongolian to IPA
-This project is not completed
+This project remains incomplete and is not suitable for production use.
 
-Do not use production
+## Install
+```bash
+pip install mongolian2ipa
+```
 
 ## Usage
 ```python
