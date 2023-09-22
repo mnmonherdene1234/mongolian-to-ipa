@@ -1,6 +1,6 @@
 from mongolian2ipa.char_convertor import a_convert, w_convert, k_convert, o_convert, ou_convert, u_convert, oo_convert, \
     h_convert, e_convert, yu_convert, ye_convert, ya_convert, ii_convert, l_convert
-from mongolian2ipa.mongolia_ipa_dictionary import mongolian_to_ipa
+from mongolian2ipa.mongolian_ipa_dictionary import mongolian_to_ipa_dictionary
 
 
 def mongolian2ipa(text: str) -> str:
@@ -66,7 +66,7 @@ def mongolian2ipa(text: str) -> str:
             if add_char is not None:
                 ipa_transcription += add_char
             else:
-                ipa_transcription += mongolian_to_ipa[c]
+                ipa_transcription += mongolian_to_ipa_dictionary[c]
         except KeyError:
             ipa_transcription += c
 

@@ -1,12 +1,11 @@
 # A simplified mapping of Mongolian phonemes to IPA
-mongolian_to_ipa = {
-    'а': 'a',  # æ OK
+mongolian_to_ipa_dictionary = {'а': 'a',  # æ OK
     'б': 'p',  # OK
     'в': 'w',  # OK
     'г': 'k',  # OK
     'д': 't',  # OK
     'е': 'e',  # OK
-    'ё': 'jo', # OK
+    'ё': 'jo',  # OK
     'ж': 'ʧ',  # OK
     'з': 'ʦ',  # OK
     'и': 'i',  # OK
@@ -34,5 +33,4 @@ mongolian_to_ipa = {
     'э': 'e',  # OK
     'ю': 'ju',  # OK
     'я': 'ja',  # OK
-    ' ': '.'
-}
+    ' ': '.'}
