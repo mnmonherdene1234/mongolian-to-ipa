@@ -96,6 +96,22 @@ class MongoliaIPATest(unittest.TestCase):
         result = mongolian2ipa('соёл')
         self.assertEqual(result, 'sɔjəl')
 
+    def test_aagim(self):
+        result = mongolian2ipa('аагим')
+        self.assertEqual(result, 'æːkəm')
+
+    def test_aavgui(self):
+        result = mongolian2ipa('аавгүй')
+        self.assertEqual(result, 'aːwkui')
+
+    def test_aagarhah(self):
+        result = mongolian2ipa('аагархах')
+        self.assertEqual(result, 'aːkərꭓəꭓ')
+
+    def test_aadaih(self):
+        result = mongolian2ipa('аадайх')
+        self.assertEqual(result, 'aːtæːꭓ')
+
 
 if __name__ == '__main__':
     unittest.main()

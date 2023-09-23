@@ -14,14 +14,14 @@ def a_convert(word: str, index: int) -> str:
         if word[index - 1] in ['а', 'у']:
             return ''
 
-    if not check_first_level_vowel(word, index):
-        return 'ə'
-
     text = word[index:]
 
     is_ai = 'й' == text[1] if len(text) > 1 else False
     if is_ai:
         return 'æː'
+
+    if not check_first_level_vowel(word, index):
+        return 'ə'
 
     is_aa = 'а' == text[1] if len(text) > 1 else False
 
@@ -29,14 +29,17 @@ def a_convert(word: str, index: int) -> str:
     is_i = 'и' == text[2] if len(text) > 2 else False
     is_soft = 'ь' == text[2] if len(text) > 2 else False
 
-    if is_i or is_soft:
-        if is_aa:
+    if is_aa:
+        is_aa_i = 'и' == text[3] if len(text) > 3 else False
+        is_aa_soft = 'ь' == text[3] if len(text) > 3 else False
+
+        if is_aa_i or is_aa_soft:
             return 'æː'
         else:
-            return 'æ'
+            return 'aː'
 
-    if is_aa:
-        return 'aː'
+    if is_i or is_soft:
+        return 'æ'
 
     return 'a'
 
@@ -58,7 +61,7 @@ def w_convert(word: str, index: int) -> str:
     return 'w'
 
 
-def k_convert(word: str, index: int) -> str:
+def g_convert(word: str, index: int) -> str:
     """
      Г letter
     :param word:
@@ -69,6 +72,18 @@ def k_convert(word: str, index: int) -> str:
     gender = check_male_female_word(word)
 
     if gender == WordGender.MALE:
+        if len(word) == index + 1:
+            return 'k'
+
+        if len(word) > index + 1:
+            if word[index + 1] in 'сш':
+                return 'k'
+
+        # гүй
+        if len(word) > index + 2:
+            if word[index + 1] == 'ү' and word[index + 2] == 'й':
+                return 'k'
+
         if len(word) > index + 1:
             if word[index + 1] in vowels:
                 return 'q'
@@ -233,6 +248,8 @@ def h_convert(word: str, index: int) -> str:
         if len(word) > index + 1:
             if not word[index + 1] in ['т', 'ц', 'ч']:
                 return 'ꭓ'
+        else:
+            return 'ꭓ'
 
     return 'x'
 

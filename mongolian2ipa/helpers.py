@@ -1,6 +1,8 @@
 from enum import Enum
 
-vowels = ['а', 'э', 'и', 'о', 'ө', 'ү', 'у']
+vowels = ['а', 'э', 'о', 'ө', 'ү', 'у', 'я', 'ё', 'е', 'ю', 'и']
+male_vowels = ['а', 'о', 'у', 'я', 'ё']
+female_vowels = ['э', 'ө', 'ү', 'е']
 
 
 class WordGender(Enum):
@@ -10,9 +12,9 @@ class WordGender(Enum):
 
 def check_male_female_word(word: str) -> WordGender:
     # Check for the presence of specific characters
-    if any(char in word for char in 'аоуяю'):
+    if any(char in word for char in male_vowels):
         return WordGender.MALE
-    elif any(char in word for char in 'эөү'):
+    elif any(char in word for char in female_vowels):
         return WordGender.FEMALE
     else:
         return WordGender.FEMALE  # Default to female if none of the characters are found
