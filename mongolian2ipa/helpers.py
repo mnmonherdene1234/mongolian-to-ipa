@@ -9,20 +9,26 @@ class WordGender(Enum):
 
 
 def check_male_female_word(word: str) -> WordGender:
-    is_a = 'а' in word
-    is_o = 'о' in word
-    is_u = 'у' in word
-    is_y = 'я' in word
-    is_yu = 'ю' in word
-
-    if is_a or is_o or is_u or is_y or is_yu:
+    # Check for the presence of specific characters
+    if any(char in word for char in 'аоуяю'):
         return WordGender.MALE
-
-    is_e = 'э' in word
-    is_oo = 'ө' in word
-    is_uu = 'ү' in word
-
-    if is_e or is_oo or is_uu:
+    elif any(char in word for char in 'эөү'):
         return WordGender.FEMALE
+    else:
+        return WordGender.FEMALE  # Default to female if none of the characters are found
 
-    return WordGender.FEMALE
+
+def check_first_level_vowel(word: str, index: int) -> bool:
+    if word[index] not in vowels:
+        return False
+
+    for i in range(len(word)):
+        c = word[i]
+
+        if c in vowels:
+            if i == index:
+                return True
+            else:
+                return False
+
+    return False

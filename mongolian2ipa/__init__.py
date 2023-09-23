@@ -1,5 +1,6 @@
 from mongolian2ipa.char_convertor import a_convert, w_convert, k_convert, o_convert, ou_convert, u_convert, oo_convert, \
-    h_convert, e_convert, yu_convert, ye_convert, ya_convert, ii_convert, l_convert
+    h_convert, e_convert, yu_convert, ye_convert, ya_convert, ii_convert, l_convert, n_convert, yo_convert
+from mongolian2ipa.helpers import vowels
 from mongolian2ipa.mongolian_ipa_dictionary import mongolian_to_ipa_dictionary
 
 
@@ -50,6 +51,9 @@ def mongolian2ipa(text: str) -> str:
             if c == 'е':
                 add_char = ye_convert(text, i)
 
+            if c == 'ё':
+                add_char = yo_convert(text, i)
+
             if c == 'я':
                 add_char = ya_convert(text, i)
 
@@ -58,6 +62,9 @@ def mongolian2ipa(text: str) -> str:
 
             if c == 'л':
                 add_char = l_convert(text, i)
+
+            if c == 'н':
+                add_char = n_convert(text, i)
 
             # ignore characters:
             if c in ['й', 'ь', 'ъ']:
