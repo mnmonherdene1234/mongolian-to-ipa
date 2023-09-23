@@ -70,7 +70,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_oodon(self):
         result = mongolian2ipa('оодон')
-        self.assertEqual(result, 'ɔːtəŋ')
+        self.assertEqual(result, 'ɔːtɔŋ')
 
     def test_orlog(self):
         result = mongolian2ipa('өрлөг')
@@ -98,7 +98,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_aagim(self):
         result = mongolian2ipa('аагим')
-        self.assertEqual(result, 'æːkəm')
+        self.assertEqual(result, 'æːqim')
 
     def test_aavgui(self):
         result = mongolian2ipa('аавгүй')
@@ -106,11 +106,23 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_aagarhah(self):
         result = mongolian2ipa('аагархах')
-        self.assertEqual(result, 'aːkərꭓəꭓ')
+        self.assertEqual(result, 'aːqarꭓəꭓ')
 
     def test_aadaih(self):
         result = mongolian2ipa('аадайх')
         self.assertEqual(result, 'aːtæːꭓ')
+
+    def test_aajim(self):
+        result = mongolian2ipa('аажим')
+        self.assertEqual(result, 'æːʧim')
+
+    def test_aandaa(self):
+        result = mongolian2ipa('аандаа')
+        self.assertEqual(result, 'aːntaː')
+
+    def test_aarnig(self):
+        result = mongolian2ipa('аарниг')
+        self.assertEqual(result, 'aːrnik')
 
 
 if __name__ == '__main__':

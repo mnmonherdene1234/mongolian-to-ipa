@@ -20,12 +20,9 @@ def a_convert(word: str, index: int) -> str:
     if is_ai:
         return 'æː'
 
-    if not check_first_level_vowel(word, index):
-        return 'ə'
-
     is_aa = 'а' == text[1] if len(text) > 1 else False
 
-    # Check if the substring contains 'и', 'ь', or 'ий'
+    # 'и', 'ь', 'ий'
     is_i = 'и' == text[2] if len(text) > 2 else False
     is_soft = 'ь' == text[2] if len(text) > 2 else False
 
@@ -37,6 +34,9 @@ def a_convert(word: str, index: int) -> str:
             return 'æː'
         else:
             return 'aː'
+
+    if not check_first_level_vowel(word, index):
+        return 'ə'
 
     if is_i or is_soft:
         return 'æ'
@@ -102,9 +102,6 @@ def o_convert(word: str, index: int) -> str:
         if word[index - 1] == 'о':
             return ''
 
-    if not check_first_level_vowel(word, index):
-        return 'ə'
-
     text = word[index:]
 
     is_ai = 'й' == text[1] if len(text) > 1 else False
@@ -123,7 +120,9 @@ def o_convert(word: str, index: int) -> str:
         else:
             return 'ɔː'
     else:
-        # Check if the substring contains 'и', 'ь', or 'ий'
+        if not check_first_level_vowel(word, index):
+            return 'ə'
+        
         is_i = 'и' == text[2] if len(text) > 2 else False
         is_soft = 'ь' == text[2] if len(text) > 2 else False
 
