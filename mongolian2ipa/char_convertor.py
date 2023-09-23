@@ -122,7 +122,7 @@ def o_convert(word: str, index: int) -> str:
     else:
         if not check_first_level_vowel(word, index):
             return 'ə'
-        
+
         is_i = 'и' == text[2] if len(text) > 2 else False
         is_soft = 'ь' == text[2] if len(text) > 2 else False
 
@@ -246,9 +246,9 @@ def h_convert(word: str, index: int) -> str:
     if gender == WordGender.MALE:
         if len(word) > index + 1:
             if not word[index + 1] in ['т', 'ц', 'ч']:
-                return 'ꭓ'
+                return 'χ'
         else:
-            return 'ꭓ'
+            return 'χ'
 
     return 'x'
 

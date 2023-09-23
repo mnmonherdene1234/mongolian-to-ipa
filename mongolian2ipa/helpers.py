@@ -27,14 +27,6 @@ def check_first_level_vowel(word: str, index: int) -> bool:
     for i in range(len(word)):
         c = word[i]
 
-        if len(word) > i + 1:
-            if word[i] == word[i + 1]:
-                continue
-
-        if not i == 0:
-            if word[i] == word[i - 1]:
-                continue
-
         if c in vowels:
             if i == index:
                 return True
