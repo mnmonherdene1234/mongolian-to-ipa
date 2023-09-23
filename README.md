@@ -13,3 +13,5 @@ from mongolian2ipa import mongolian2ipa
 result = mongolian2ipa('сайн уу')
 print(result)  # sæːn.oː
 ```
+
+correct: χ wrong: ꭓ
