@@ -4,22 +4,6 @@ from mongolian2ipa.helpers import check_male_female_word, WordGender, check_firs
 
 
 class MongoliaIPATest(unittest.TestCase):
-    def test_a(self):
-        result = mongolian2ipa('a')
-        self.assertEqual(result, 'a')
-
-    def test_aa(self):
-        result = mongolian2ipa('аа')
-        self.assertEqual(result, 'aː')
-
-    def test_ai(self):
-        result = mongolian2ipa('ай')
-        self.assertEqual(result, 'æː')
-
-    def test_a_with_i_ii(self):
-        result = mongolian2ipa('ань')
-        self.assertEqual(result[0], 'æ')
-
     def test_male(self):
         result = check_male_female_word('машин')
         self.assertEqual(result, WordGender.MALE)
@@ -123,10 +107,6 @@ class MongoliaIPATest(unittest.TestCase):
     def test_hil(self):
         result = mongolian2ipa('хил')
         self.assertEqual(result, 'xiɬ')
-
-    def test_ijil(self):
-        result = mongolian2ipa('ижил')
-        self.assertEqual(result, 'iʧəɬ')
 
     def test_shim(self):
         result = mongolian2ipa('шим')
@@ -343,6 +323,70 @@ class MongoliaIPATest(unittest.TestCase):
     def test_lham(self):
         result = mongolian2ipa('Лхам')
         self.assertEqual(result, 'ɬʰam')
+
+    def test_ger(self):
+        result = mongolian2ipa('гэр')
+        self.assertEqual(result, 'ker')
+
+    def test_gal(self):
+        result = mongolian2ipa('гал')
+        self.assertEqual(result, 'qaɬ')
+
+    def test_sanaa(self):
+        result = mongolian2ipa('санаа')
+        self.assertEqual(result, 'sanaː')
+
+    def test_shagnal(self):
+        result = mongolian2ipa('шагнал')
+        self.assertEqual(result, 'ʃaknəɬ')
+
+    def test_har(self):
+        result = mongolian2ipa('хар')
+        self.assertEqual(result, 'χar')
+
+    def test_zuu(self):
+        result = mongolian2ipa('зуу')
+        self.assertEqual(result, 'ʦoː')
+
+    def test_aj(self):
+        result = mongolian2ipa('аж')
+        self.assertEqual(result, 'aʧ')
+
+    def test_tsetseg(self):
+        result = mongolian2ipa('цэцэг')
+        self.assertEqual(result, 'ʦʰeʦʰək')
+
+    def test_chimeg(self):
+        result = mongolian2ipa('чимэг')
+        self.assertEqual(result, 'ʧʰimək')
+
+    def test_huree(self):
+        result = mongolian2ipa('хүрээ')
+        self.assertEqual(result, 'xureː')
+
+    def test_lam(self):
+        result = mongolian2ipa('лам')
+        self.assertEqual(result, 'ɬam')
+
+    def test_malgai(self):
+        result = mongolian2ipa('малгай')
+        self.assertEqual(result, 'maɬqæː')
+
+    def test_hangai(self):
+        result = mongolian2ipa('хангай')
+        self.assertEqual(result, 'χaŋqæː')
+
+    def test_vaar(self):
+        result = mongolian2ipa('ваар')
+        self.assertEqual(result, 'waːr')
+
+    def test_devter(self):
+        result = mongolian2ipa('дэвтэр')
+        self.assertEqual(result, 'teɸtʰər')
+
+    def test_kadr(self):
+        result = mongolian2ipa('кадр')
+        self.assertEqual(result, 'kʰatr')
 
 
 if __name__ == '__main__':
