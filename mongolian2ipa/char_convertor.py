@@ -14,6 +14,10 @@ def a_convert(word: str, index: int) -> str:
         if word[index - 1] in ['а', 'у', 'я']:
             return ''
 
+    if len(word) - 1 == index and not index == 0:
+        if word[index - 1] == 'г':
+            return 'q'
+
     text = word[index:]
 
     is_ai = 'й' == text[1] if len(text) > 1 else False
@@ -68,6 +72,21 @@ def g_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
+
+    if len(word) - 2 == index and word[index + 1] in ['а', 'э', 'о', 'ө']:
+        vowel_index = index + 1
+        word_char_list = list(word)
+        word_char_list[index] = '*'
+        new_word = ''.join(word_char_list)
+
+        if word[vowel_index] == 'а':
+            return a_convert(new_word, vowel_index)
+        elif word[vowel_index] == 'э':
+            return e_convert(new_word, vowel_index)
+        elif word[vowel_index] == 'о':
+            return o_convert(new_word, vowel_index)
+        elif word[vowel_index] == 'ө':
+            return ou_convert(new_word, vowel_index)
 
     gender = check_male_female_word(word)
 
@@ -237,6 +256,11 @@ def h_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
+    after_text = word[index:]
+
+    if 'ь' in after_text or 'ь' in after_text:
+        return 'x'
+
     if not index == 0:
         if word[index - 1] == 'л':
             return ''
@@ -393,13 +417,13 @@ def i_convert(word: str, index: int) -> str:
     text = word[index:]
     length = len(text)
 
+    if length > 2 and index + 1 < length and text[1] == 'й':
+        return 'iː'
+
     if not check_first_level_vowel(word, index):
         return 'ə'
 
-    if length > 2 and index + 1 < length and text[1] == 'й':
-        return 'iː'
-    else:
-        return 'i'
+    return 'i'
 
 
 def l_convert(word: str, index: int) -> str:

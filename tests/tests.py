@@ -126,7 +126,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_hali(self):
         result = mongolian2ipa('халь')
-        self.assertEqual(result, 'χæɬ')
+        self.assertEqual(result, 'xæɬ')
 
     def test_agi(self):
         result = mongolian2ipa('агь')
@@ -142,7 +142,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_holi(self):
         result = mongolian2ipa('холь')
-        self.assertEqual(result, 'χœɬ')
+        self.assertEqual(result, 'xœɬ')
 
     def test_mori(self):
         result = mongolian2ipa('морь')
@@ -158,7 +158,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_huli(self):
         result = mongolian2ipa('хуль')
-        self.assertEqual(result, 'χʏɬ')
+        self.assertEqual(result, 'xʏɬ')
 
     def test_uri(self):
         result = mongolian2ipa('урь')
@@ -226,7 +226,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_huuli(self):
         result = mongolian2ipa('хууль')
-        self.assertEqual(result, 'χʏːɬ')
+        self.assertEqual(result, 'xʏːɬ')
 
     def test_dugui(self):
         result = mongolian2ipa('дугуй')
@@ -387,6 +387,22 @@ class MongoliaIPATest(unittest.TestCase):
     def test_kadr(self):
         result = mongolian2ipa('кадр')
         self.assertEqual(result, 'kʰatr')
+
+    def test_aadga(self):
+        result = mongolian2ipa('Аадга')
+        self.assertEqual(result, 'aːtəq')
+
+    def test_avjii(self):
+        result = mongolian2ipa('авжий')
+        self.assertEqual(result, 'awʧə')
+
+    def test_honi(self):
+        result = mongolian2ipa('хонь')
+        self.assertEqual(result, 'xœn')
+
+    def test_aaga(self):
+        result = mongolian2ipa('Аага')
+        self.assertEqual(result, 'aːq')
 
 
 if __name__ == '__main__':
