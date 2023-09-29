@@ -5,7 +5,7 @@ from mongolian2ipa.mongolian_ipa_dictionary import mongolian_to_ipa_dictionary
 
 
 def mongolian2ipa(text: str) -> str:
-    text = text.lower()
+    text = text.lower().strip()
 
     ipa_transcription = ''
 

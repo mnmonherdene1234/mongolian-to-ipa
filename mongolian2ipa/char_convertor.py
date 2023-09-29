@@ -455,8 +455,9 @@ def i_convert(word: str, index: int) -> str:
     """
     length = len(word)
 
-    if index < length + 1 and word[index + 1] == 'й':
-        return 'iː'
+    if index + 1 < length:
+        if word[index + 1] == 'й':
+            return 'iː'
 
     if not check_first_level_vowel(word, index):
         return 'ə'
