@@ -14,6 +14,10 @@ def a_convert(word: str, index: int) -> str:
         if word[index - 1] in ['а', 'у', 'я']:
             return ''
 
+    if len(word) - 1 == index:
+        if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
+            return ''
+
     if len(word) - 1 == index and not index == 0:
         if word[index - 1] == 'г':
             return 'q'
@@ -27,12 +31,12 @@ def a_convert(word: str, index: int) -> str:
     is_aa = 'а' == text[1] if len(text) > 1 else False
 
     # 'и', 'ь', 'ий'
-    is_i = 'и' == text[2] if len(text) > 2 else False
-    is_soft = 'ь' == text[2] if len(text) > 2 else False
+    is_i = 'и' in text
+    is_soft = 'ь' in text
 
     if is_aa:
-        is_aa_i = 'и' == text[3] if len(text) > 3 else False
-        is_aa_soft = 'ь' == text[3] if len(text) > 3 else False
+        is_aa_i = 'и' in text
+        is_aa_soft = 'ь' in text
 
         if is_aa_i or is_aa_soft:
             return 'æː'
@@ -59,7 +63,14 @@ def w_convert(word: str, index: int) -> str:
     if len(word) > index + 1:
         next_char = word[index + 1]
 
-        if next_char == 'т' or next_char == 'ц' or next_char == 'ч':
+        if next_char in ['т', 'ц', 'ч']:
+            return 'ɸ'
+
+    if len(word) > index + 2:
+        next_char = word[index + 1]
+        next_next_char = word[index + 2]
+
+        if next_char == 'ь' and next_next_char in ['т', 'ц', 'ч']:
             return 'ɸ'
 
     return 'w'
@@ -73,7 +84,7 @@ def g_convert(word: str, index: int) -> str:
     :return:
     """
 
-    if len(word) - 2 == index and word[index + 1] in ['а', 'э', 'о', 'ө']:
+    if len(word) - 2 == index and word[index + 1] in ['а', 'э', 'о', 'ө'] and not word[index - 1] in vowels:
         vowel_index = index + 1
         word_char_list = list(word)
         word_char_list[index] = '*'
@@ -95,8 +106,11 @@ def g_convert(word: str, index: int) -> str:
             return 'k'
 
         if len(word) > index + 1:
-            if word[index + 1] in 'сш':
+            if word[index + 1] in ['с', 'ш']:
                 return 'k'
+
+            if word[index + 1] in ['т', 'ц', 'ч']:
+                return 'x'
 
         # гүй
         if len(word) > index + 2:
@@ -120,6 +134,14 @@ def o_convert(word: str, index: int) -> str:
     if not index == 0:
         if word[index - 1] in ['о', 'ё']:
             return ''
+
+    if len(word) - 1 == index:
+        if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
+            return ''
+
+    if len(word) - 1 == index and not index == 0:
+        if word[index - 1] == 'г':
+            return 'q'
 
     text = word[index:]
 
@@ -161,6 +183,14 @@ def ou_convert(word: str, index: int) -> str:
     if not index == 0:
         if word[index - 1] in ['ө', 'е']:
             return ''
+
+    if len(word) - 1 == index:
+        if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
+            return ''
+
+    if len(word) - 1 == index and not index == 0:
+        if word[index - 1] == 'г':
+            return 'k'
 
     text = word[index:]
 
@@ -289,6 +319,14 @@ def e_convert(word: str, index: int) -> str:
         if word[index - 1] in ['э', 'е']:
             return ''
 
+    if len(word) - 1 == index:
+        if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
+            return ''
+
+    if len(word) - 1 == index and not index == 0:
+        if word[index - 1] == 'г':
+            return 'k'
+
     text = word[index:]
 
     is_ei = 'й' == text[1] if len(text) > 1 else False
@@ -332,8 +370,6 @@ def ye_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
-    text = word[index]
-    length = len(text)
 
     if check_first_level_vowel(word, index):
         if len(word) > index + 1:
@@ -372,11 +408,14 @@ def ya_convert(word: str, index: int) -> str:
 
     if check_first_level_vowel(word, index):
         if len(word) > index + 2:
-            if word[2] in ['ь', 'й']:
+            if word[index + 2] in ['ь', 'й']:
                 return 'jæ'
 
         if len(word) > index + 1:
-            if word[1] in ['й']:
+            if word[index + 1] in ['а']:
+                return 'jaː'
+
+            if word[index + 1] in ['й']:
                 return 'jæː'
 
             if not word[index + 1] in vowels:
@@ -414,10 +453,9 @@ def i_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
-    text = word[index:]
-    length = len(text)
+    length = len(word)
 
-    if length > 2 and index + 1 < length and text[1] == 'й':
+    if index < length + 1 and word[index + 1] == 'й':
         return 'iː'
 
     if not check_first_level_vowel(word, index):
@@ -452,7 +490,7 @@ def n_convert(word: str, index: int) -> str:
     text = word[index:]
     length = len(text)
 
-    if length > 2 and index + 1 < length and text[1] in 'хгсш':
+    if length > 2 and index + 1 < length and text[1] in ['х', 'г', 'с', 'ш']:
         return 'ŋ'
 
     if len(word) - 1 == index:

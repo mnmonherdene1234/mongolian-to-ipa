@@ -102,7 +102,7 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_aarnig(self):
         result = mongolian2ipa('аарниг')
-        self.assertEqual(result, 'aːrnək')
+        self.assertEqual(result, 'æːrnək')
 
     def test_hil(self):
         result = mongolian2ipa('хил')
@@ -394,15 +394,55 @@ class MongoliaIPATest(unittest.TestCase):
 
     def test_avjii(self):
         result = mongolian2ipa('авжий')
-        self.assertEqual(result, 'awʧə')
+        self.assertEqual(result, 'æwʧiː')
 
     def test_honi(self):
         result = mongolian2ipa('хонь')
         self.assertEqual(result, 'xœn')
 
+    def test_avich(self):
+        result = mongolian2ipa('АВЬЧ')
+        self.assertEqual(result, 'æɸʧʰ')
+
+    def test_sonsgol(self):
+        result = mongolian2ipa('сонсгол')
+        self.assertEqual(result, 'sɔŋsqəɬ')
+
+    def test_yamh(self):
+        result = mongolian2ipa('яамх')
+        self.assertEqual(result, 'jaːmχ')
+
+    def test_avaltsag(self):
+        result = mongolian2ipa('АВАЛЦАГЧ')
+        self.assertEqual(result, 'awəɬʦʰəxʧʰ')
+
     def test_aaga(self):
         result = mongolian2ipa('Аага')
         self.assertEqual(result, 'aːq')
+
+    def test_eege(self):
+        result = mongolian2ipa('ээгэ')
+        self.assertEqual(result, 'eːk')
+
+    def test_oogo(self):
+        result = mongolian2ipa('оого')
+        self.assertEqual(result, 'ɔːq')
+
+    def test_oogoo(self):
+        result = mongolian2ipa('өөгө')
+        self.assertEqual(result, 'өːk')
+
+    def test_eedge(self):
+        result = mongolian2ipa('ээдгэ')
+        self.assertEqual(result, 'eːtək')
+
+    def test_oodgo(self):
+        result = mongolian2ipa('оодго')
+        self.assertEqual(result, 'ɔːtəq')
+
+    def test_ooodgo(self):
+        result = mongolian2ipa('өөдгө')
+        self.assertEqual(result, 'өːtək')
 
 
 if __name__ == '__main__':
