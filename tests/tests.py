@@ -1,4 +1,5 @@
 import unittest
+
 from mongolian2ipa import mongolian2ipa
 from mongolian2ipa.helpers import check_male_female_word, WordGender, check_first_level_vowel
 
@@ -443,6 +444,30 @@ class MongoliaIPATest(unittest.TestCase):
     def test_ooodgo(self):
         result = mongolian2ipa('өөдгө')
         self.assertEqual(result, 'өːtək')
+
+    def test_aagguideh(self):
+        result = mongolian2ipa('ааггүйдэх')
+        self.assertEqual(result, 'aːkkuitəx')
+
+    def test_egch(self):
+        result = mongolian2ipa('эгч')
+        self.assertEqual(result, 'exʧʰ')
+
+    def test_ania(self):
+        result = mongolian2ipa('аниа')
+        self.assertEqual(result, 'æniaː')
+
+    def test_anio(self):
+        result = mongolian2ipa('анио')
+        self.assertEqual(result, 'æniɔː')
+
+    def test_aniu(self):
+        result = mongolian2ipa('аниу')
+        self.assertEqual(result, 'ænioː')
+
+    def test_enie(self):
+        result = mongolian2ipa('эниэ')
+        self.assertEqual(result, 'enieː')
 
 
 if __name__ == '__main__':

@@ -14,6 +14,11 @@ def a_convert(word: str, index: int) -> str:
         if word[index - 1] in ['а', 'у', 'я']:
             return ''
 
+    # ИА
+    if index != 0:
+        if word[index - 1] == 'и':
+            return 'aː'
+
     if len(word) - 1 == index:
         if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
             return ''
@@ -99,6 +104,10 @@ def g_convert(word: str, index: int) -> str:
         elif word[vowel_index] == 'ө':
             return ou_convert(new_word, vowel_index)
 
+    if len(word) > index + 1:
+        if word[index + 1] in ['т', 'ц', 'ч']:
+            return 'x'
+
     gender = check_male_female_word(word)
 
     if gender == WordGender.MALE:
@@ -108,9 +117,6 @@ def g_convert(word: str, index: int) -> str:
         if len(word) > index + 1:
             if word[index + 1] in ['с', 'ш']:
                 return 'k'
-
-            if word[index + 1] in ['т', 'ц', 'ч']:
-                return 'x'
 
         # гүй
         if len(word) > index + 2:
@@ -134,6 +140,11 @@ def o_convert(word: str, index: int) -> str:
     if not index == 0:
         if word[index - 1] in ['о', 'ё']:
             return ''
+
+    # ИО
+    if index != 0:
+        if word[index - 1] == 'и':
+            return 'ɔː'
 
     if len(word) - 1 == index:
         if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
@@ -184,6 +195,11 @@ def ou_convert(word: str, index: int) -> str:
         if word[index - 1] in ['ө', 'е']:
             return ''
 
+    # ИӨ
+    if index != 0:
+        if word[index - 1] == 'и':
+            return 'өː'
+
     if len(word) - 1 == index:
         if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
             return ''
@@ -194,8 +210,8 @@ def ou_convert(word: str, index: int) -> str:
 
     text = word[index:]
 
-    is_ui = 'ө' == text[1] if len(text) > 1 else False
-    if is_ui:
+    is_oo = 'ө' == text[1] if len(text) > 1 else False
+    if is_oo:
         return 'өː'
 
     if not check_first_level_vowel(word, index):
@@ -215,6 +231,11 @@ def u_convert(word: str, index: int) -> str:
     if not index == 0:
         if word[index - 1] in ['у', 'ю']:
             return ''
+
+    # ИУ
+    if index != 0:
+        if word[index - 1] == 'и':
+            return 'oː'
 
     text = word[index:]
 
@@ -261,9 +282,15 @@ def oo_convert(word: str, index: int) -> str:
     :return:
     """
 
+    # ҮҮ
     if not index == 0:
         if word[index - 1] == 'ү':
             return ''
+
+    # ИҮ
+    if index != 0:
+        if word[index - 1] == 'и':
+            return 'uː'
 
     text = word[index:]
 
@@ -286,16 +313,21 @@ def h_convert(word: str, index: int) -> str:
     :param index:
     :return:
     """
+    # ЛХ
+    if not index == 0:
+        if word[index - 1] == 'л':
+            return ''
+
     after_text = word[index:]
 
     if 'ь' in after_text or 'ь' in after_text:
         return 'x'
 
-    if not index == 0:
-        if word[index - 1] == 'л':
-            return ''
-
     gender = check_male_female_word(word)
+
+    if index != 0:
+        if word[index - 1] in ['э', 'ө', 'ү']:
+            return 'x'
 
     if gender == WordGender.MALE:
         if len(word) > index + 1:
@@ -318,6 +350,9 @@ def e_convert(word: str, index: int) -> str:
     if not index == 0:
         if word[index - 1] in ['э', 'е']:
             return ''
+
+        if word[index - 1] == 'и':
+            return 'eː'
 
     if len(word) - 1 == index:
         if index >= 2 and word[index - 1] == 'г' and word[index - 2] in vowels:
@@ -456,6 +491,9 @@ def i_convert(word: str, index: int) -> str:
     length = len(word)
 
     if index + 1 < length:
+        if word[index + 1] in vowels:
+            return 'i'
+
         if word[index + 1] == 'й':
             return 'iː'
 
