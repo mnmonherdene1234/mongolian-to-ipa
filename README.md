@@ -1,5 +1,5 @@
 # Mongolian to IPA
-This project remains incomplete and is not suitable for production use.
+The translation of Mongolian to the International Phonetic Alphabet (IPA) is still a work in progress and is not yet ready for production use. Currently, the accuracy stands at 52%.
 
 ## Install
 ```bash
